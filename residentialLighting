@@ -1,0 +1,22 @@
+# "Savings on energy costs"
+# = (Number of bulbs replaced x Watts of Incandescent bulb x Hours used per day x Number of days per year x Cost of electricity per kWh) - (Number of bulbs replaced x Watts of LED bulb x Hours used per day x Number of days per year x Cost of electricity per kWh)
+#
+# = (A1 x B1 x C1 x D1 x E1) - (A1 x F1 x C1 x D1 x E1)
+#
+# ...or more precisely:
+# = (A1 x B1 x C1 x D1 x E1) - (A1 x (B1 - F1) x C1 x D1 x E1)
+
+def apply(x):
+    lines = x.split("\n")
+    new_lines = []
+    for line in lines:
+        if line.startswith("#"):
+            new_lines.append(line)
+        else:
+            new_lines.append("=" + line.replace("x", "*").replace("-", "-"))
+    return "\n".join(new_lines)
+
+
+if __name__ == "__main__":
+    import sys
+    print apply(sys.stdin.read())
